@@ -1,0 +1,52 @@
+:root {
+    --counterH: 265px;
+    --margem: 25px;
+}
+
+#container, #total-time {
+    display: flex;
+    gap: var(--margem);
+    margin: var(--margem);
+}
+
+.centerText {
+    text-align: center;
+    flex: 1;
+    border-radius: 10px;
+    height: var(--counterH);
+}
+
+h3 { font-size: 25px; }
+h1 { font-size: 75px; }
+
+#red { background-color: lightcoral; }
+#green { background-color: lightgreen; }
+#blue { background-color: lightblue; }
+#total, #time { background-color: rgb(173, 173, 173); }
+#btnOnOff { background-color: lightgreen; }
+
+#buttons {
+    flex: 0.65;
+    background-color: lightgray;
+}
+
+button {
+    display: block;
+    margin: 40px auto;
+    padding: 15px 40px;
+    font-size: 20px;
+    border-radius: 8px;
+}
+
+button:hover { cursor: pointer; }
+
+#ipInput {
+    display: block;
+    margin: 20px auto 10px auto;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 80%;
+    text-align: center;
+}
