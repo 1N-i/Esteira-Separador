@@ -6,8 +6,8 @@
 #include <LiquidCrystal_I2C.h>
 
 //Credenciais do seu Wi-Fi
-const char* ssid = "Nome do wifi";
-const char* password = "Senha";
+const char* ssid = "Nome_Wifi";
+const char* password = "Senha_Wifi";
 
 //Inicializa o Servidor WebSocket na porta 81
 WebSocketsServer webSocket = WebSocketsServer(81);
@@ -54,12 +54,12 @@ void setup() {
     while (1);
   }
 
-  //Pinos dos Servos no ESP32 (Exemplo: 13, 12, 14)
+  //Pinos dos Servos no ESP32 (13, 12, 14)
   servoRed.attach(13);
   servoGreen.attach(12);
   servoBlue.attach(14);
 
-  lcd.init();
+  lcd.begin();
   lcd.backlight();
   lcd.setCursor(0, 0);
   lcd.print("IP: ");
@@ -91,6 +91,7 @@ void vermelho() {
 }
 
 void verde() {
+  delay(1000);
   servoGreen.write(angulo);
   delay(dela_);
   servoGreen.write(0);
@@ -99,6 +100,7 @@ void verde() {
 }
 
 void azul() {
+  delay(1500);
   servoBlue.write(angulo);
   delay(dela_);
   servoBlue.write(0);
@@ -109,7 +111,7 @@ void azul() {
 void loop() {
   webSocket.loop(); //Mantém a conexão viva
 
-  //Lógica de tempo sem travar o código (substitui o tempo += 1 solto)
+  //Lógica de tempo
   if (millis() - ultimoTempo >= 1000) {
     tempo += 1;
     ultimoTempo = millis();
@@ -129,9 +131,10 @@ void loop() {
     }
   }
 
-  //Atualização básica do LCD
+  //Atualização do LCD
   lcd.setCursor(0, 1);
   lcd.print("R:"); lcd.print(red);
   lcd.print(" G:"); lcd.print(green);
   lcd.print(" B:"); lcd.print(blue);
+  lcd.print(" T:"); lcd.print(tempo);
 }

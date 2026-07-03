@@ -27,7 +27,7 @@ connectBtn.addEventListener('click', () => {
     };
 
     socket.onmessage = function(event) {
-        //Quando os dados chegam pela rede, processamos imediatamente
+        //Quando os dados chegam pela rede, são processados imediatamente
         processarDados(event.data);
     };
 
@@ -38,7 +38,7 @@ connectBtn.addEventListener('click', () => {
     };
 });
 
-//A Função se mantém idêntica, pois o ESP32 enviará o mesmo formato de texto
+//ESP32 enviará o formato de texto
 function processarDados(data) {
     const regex = /Tempo:\s*(\d+)s;\s*Vermelho:\s*(\d+);\s*Azul:\s*(\d+);\s*Verde:\s*(\d+);\s*Total:\s*(\d+);/;
     const match = data.match(regex);
